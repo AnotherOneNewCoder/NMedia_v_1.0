@@ -31,7 +31,8 @@
         android:layout_marginTop="@dimen/common_spaces"
         android:textColor="@color/own"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        tools:ignore="VisualLintLongText" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/bottomContentBarrier"
@@ -67,15 +68,19 @@
         app:layout_constraintStart_toEndOf="@id/ivAvatar"
         app:layout_constraintTop_toBottomOf="@id/tvAuthor"
         app:layout_constraintBottom_toBottomOf="@id/ivAvatar"/>
+
     <ImageButton
         android:id="@+id/ibMenu"
-        android:background="@android:color/transparent"
-        app:srcCompat="@drawable/baseline_more_vert_24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/app_name"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tvAuthor"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:srcCompat="@drawable/baseline_more_vert_24" />
     <ImageView
         android:id="@+id/ivLikes"
         android:background="@android:color/transparent"
@@ -84,7 +89,8 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/common_spaces"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bottomContentBarrier"/>
+        app:layout_constraintTop_toBottomOf="@id/bottomContentBarrier"
+        android:contentDescription="@string/likes" />
 
     <ImageView
         android:id="@+id/ivReposts"
@@ -95,7 +101,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/ivLikes"
         app:layout_constraintStart_toEndOf="@id/tvAmountLikes"
         app:layout_constraintTop_toTopOf="@+id/ivLikes"
-        app:srcCompat="@drawable/repost" />
+        app:srcCompat="@drawable/repost"
+        android:contentDescription="@string/reposts" />
     <ImageView
         android:id="@+id/ivViews"
         android:layout_width="wrap_content"
@@ -104,13 +111,14 @@
         app:layout_constraintEnd_toStartOf="@id/tvAmountViews"
         app:layout_constraintTop_toTopOf="@+id/ivLikes"
         android:layout_marginEnd="@dimen/half_common"
-        app:srcCompat="@drawable/veiwed"/>
+        app:srcCompat="@drawable/veiwed"
+        android:contentDescription="@string/views" />
 
     <TextView
         android:id="@+id/tvAmountLikes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/amountlikes"
         tools:text="10"
         android:textColor="@color/own"
         android:layout_marginStart="@dimen/half_common"
@@ -121,7 +129,7 @@
         android:id="@+id/tvAmountReposts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/amountreposts"
         tools:text="5"
         android:textColor="@color/own"
         android:layout_marginStart="@dimen/half_common"
@@ -133,7 +141,7 @@
         android:id="@+id/tvAmountViews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/amountviews"
         tools:text="5"
         android:textColor="@color/own"
         app:layout_constraintBottom_toBottomOf="@+id/ivLikes"
@@ -145,7 +153,7 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_marginTop="@dimen/common_spaces"
-        android:background="@android:color/red"
+        android:background="@color/line"
         app:layout_constraintEnd_toEndOf="@+id/tvAmountViews"
         app:layout_constraintStart_toStartOf="@+id/ivLikes"
         app:layout_constraintTop_toBottomOf="@id/ivLikes" />
