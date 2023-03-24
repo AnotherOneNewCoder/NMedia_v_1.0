@@ -9,12 +9,56 @@
 
     <ImageView
         android:id="@+id/ivAvatar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/posts_avatar_size"
+        android:layout_height="@dimen/posts_avatar_size"
+        android:layout_marginBottom="@dimen/common_spaces"
         android:contentDescription="@string/avatar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/bottomBarrier"
         tools:src="@sample/posts.json/data/authorAvatar" />
+
+    <TextView
+        android:id="@+id/tvAuthor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/common_spaces"
+        android:layout_marginEnd="@dimen/common_spaces"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/own"
+        app:layout_constraintBottom_toTopOf="@id/tvpublished"
+        app:layout_constraintEnd_toStartOf="@id/ibMenu"
+        app:layout_constraintStart_toEndOf="@+id/ivAvatar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="@sample/posts.json/data/author" />
+
+    <TextView
+        android:id="@+id/tvpublished"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/common_spaces"
+        android:layout_marginEnd="@dimen/common_spaces"
+        android:layout_marginBottom="@dimen/common_spaces"
+        android:textColor="@color/own"
+        app:layout_constraintBottom_toBottomOf="@id/bottomBarrier"
+        app:layout_constraintStart_toEndOf="@id/ivAvatar"
+        app:layout_constraintTop_toBottomOf="@id/tvAuthor"
+        app:layout_constraintEnd_toStartOf="@id/ibMenu"
+        tools:text="@sample/posts.json/data/published" />
+
+    <ImageButton
+        android:id="@+id/ibMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/app_name"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/baseline_more_vert_24" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/bottomBarrier"
@@ -32,7 +76,8 @@
         android:textColor="@color/own"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:ignore="VisualLintLongText" />
+        tools:ignore="VisualLintLongText"
+        android:autoLink="web"/>
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/bottomContentBarrier"
@@ -43,44 +88,6 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="249dp" />
 
-    <TextView
-        android:id="@+id/tvAuthor"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        tools:text="@sample/posts.json/data/author"
-        android:layout_marginHorizontal="@dimen/common_spaces"
-        android:textColor="@color/own"
-        app:layout_constraintEnd_toStartOf="@id/ibMenu"
-        app:layout_constraintStart_toEndOf="@id/ivAvatar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        android:maxLines="1"
-        android:ellipsize="end"
-        app:layout_constraintBottom_toTopOf="@id/tvpublished"/>
-
-    <TextView
-        android:id="@+id/tvpublished"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/common_spaces"
-        tools:text="@sample/posts.json/data/published"
-        android:textColor="@color/own"
-        app:layout_constraintStart_toEndOf="@id/ivAvatar"
-        app:layout_constraintTop_toBottomOf="@id/tvAuthor"
-        app:layout_constraintBottom_toBottomOf="@id/ivAvatar"/>
-
-    <ImageButton
-        android:id="@+id/ibMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/app_name"
-        android:minWidth="48dp"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tvAuthor"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_more_vert_24" />
     <ImageView
         android:id="@+id/ivLikes"
         android:background="@android:color/transparent"
@@ -148,15 +155,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/ivLikes" />
 
-    <View
-        android:id="@+id/vLine"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="@dimen/common_spaces"
-        android:background="@color/line"
-        app:layout_constraintEnd_toEndOf="@+id/tvAmountViews"
-        app:layout_constraintStart_toStartOf="@+id/ivLikes"
-        app:layout_constraintTop_toBottomOf="@id/ivLikes" />
+
 
 
 
