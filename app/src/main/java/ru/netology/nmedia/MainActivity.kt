@@ -24,9 +24,9 @@ class MainActivity : AppCompatActivity() {
 
             ivAvatar?.setImageResource(R.drawable.ic_launcher_netology_foreground)
 
-            tvpublished?.text = post.published
-            tvContent?.text = post.content
-            tvAuthor?.text = post.author
+            tvpublished.text = post.published
+            tvContent.text = post.content
+            tvAuthor.text = post.author
             tvAmountLikes?.text = Convert.toConvert(post.countLikes)
             tvAmountReposts?.text = Convert.toConvert(post.countShares)
             tvAmountViews?.text = Convert.toConvert(post.countViews)
@@ -46,12 +46,12 @@ class MainActivity : AppCompatActivity() {
             ivReposts?.setOnClickListener {
                 post.countShares++
                 tvAmountReposts?.text = Convert.toConvert(post.countShares)
-                ivReposts.setImageResource(reposted)
+                ivReposts.setImageResource(R.drawable.reposted)
             }
             ivViews?.setOnClickListener {
                 post.countViews++
                 tvAmountViews?.text = Convert.toConvert(post.countViews)
-                ivViews?.setImageResource(R.drawable.veiwedalready)
+                ivViews.setImageResource(R.drawable.veiwedalready)
             }
 
         }
