@@ -80,6 +80,81 @@
         app:layout_constraintTop_toBottomOf="@id/bottomBarrier"
         android:textColor="@color/own"
         tools:text="@sample/posts.json/data/content" />
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/bottomContentBarrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="tvContent"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="249dp" />
+
+    <ImageView
+        android:id="@+id/ivLikes"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/likes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/common_spaces"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bottomContentBarrier"
+        android:contentDescription="@string/likes" />
+
+    <ImageView
+        android:id="@+id/ivReposts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/common_spaces"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/ivLikes"
+        app:layout_constraintStart_toEndOf="@id/tvAmountLikes"
+        app:layout_constraintTop_toTopOf="@+id/ivLikes"
+        app:srcCompat="@drawable/repost"
+        android:contentDescription="@string/reposts" />
+    <ImageView
+        android:id="@+id/ivViews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/ivLikes"
+        app:layout_constraintEnd_toStartOf="@id/tvAmountViews"
+        app:layout_constraintTop_toTopOf="@+id/ivLikes"
+        android:layout_marginEnd="@dimen/half_common"
+        app:srcCompat="@drawable/veiwed"
+        android:contentDescription="@string/views" />
+
+    <TextView
+        android:id="@+id/tvAmountLikes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/amountlikes"
+        tools:text="10"
+        android:textColor="@color/own"
+        android:layout_marginStart="@dimen/half_common"
+        app:layout_constraintBottom_toBottomOf="@+id/ivLikes"
+        app:layout_constraintStart_toEndOf="@+id/ivLikes"
+        app:layout_constraintTop_toTopOf="@+id/ivLikes" />
+    <TextView
+        android:id="@+id/tvAmountReposts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/amountreposts"
+        tools:text="5"
+        android:textColor="@color/own"
+        android:layout_marginStart="@dimen/half_common"
+        app:layout_constraintBottom_toBottomOf="@+id/ivLikes"
+        app:layout_constraintStart_toEndOf="@+id/ivReposts"
+        app:layout_constraintTop_toTopOf="@+id/ivLikes" />
+
+    <TextView
+        android:id="@+id/tvAmountViews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/amountviews"
+        tools:text="5"
+        android:textColor="@color/own"
+        app:layout_constraintBottom_toBottomOf="@+id/ivLikes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivLikes" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
