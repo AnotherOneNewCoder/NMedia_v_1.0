@@ -28,9 +28,9 @@ class MainActivity : AppCompatActivity() {
                 tvAmountReposts.text = Convert.toConvert(post.countShares)
                 tvAmountViews.text = Convert.toConvert(post.countViews)
 
-                if (post.likedByMe) ivLikes.setImageResource(R.drawable.liked) else ivLikes.setImageResource(R.drawable.likes)
-                if (post.sharedByMe) ivReposts.setImageResource(R.drawable.reposted) else ivReposts.setImageResource(R.drawable.repost)
-                if (post.viewedByMe) ivViews.setImageResource(R.drawable.veiwedalready) else ivViews.setImageResource(R.drawable.veiwed)
+                ivLikes.setImageResource(if(post.likedByMe) R.drawable.liked else R.drawable.likes)
+                ivReposts.setImageResource(if(post.sharedByMe) R.drawable.reposted else R.drawable.repost)
+                ivViews.setImageResource(if(post.viewedByMe) R.drawable.veiwedalready else R.drawable.veiwed)
 
 
             }

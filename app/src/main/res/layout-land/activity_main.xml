@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/avatar"
+        android:id="@+id/ivAvatar"
         android:layout_width="@dimen/posts_avatar_size"
         android:layout_height="@dimen/posts_avatar_size"
         android:layout_marginBottom="@dimen/common_spaces"
@@ -29,7 +29,7 @@
         android:singleLine="true"
         app:layout_constraintBottom_toTopOf="@+id/tvpublished"
         app:layout_constraintEnd_toStartOf="@id/ibMenu"
-        app:layout_constraintStart_toEndOf="@id/avatar"
+        app:layout_constraintStart_toEndOf="@id/ivAvatar"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
         android:textColor="@color/own"
@@ -44,7 +44,7 @@
         android:layout_marginBottom="@dimen/common_spaces"
         app:layout_constraintBottom_toBottomOf="@id/bottomBarrier"
         app:layout_constraintEnd_toStartOf="@id/ibMenu"
-        app:layout_constraintStart_toEndOf="@id/avatar"
+        app:layout_constraintStart_toEndOf="@id/ivAvatar"
         app:layout_constraintTop_toBottomOf="@id/tvAuthor"
         android:textColor="@color/own"
         tools:text="@sample/posts.json/data/published" />
