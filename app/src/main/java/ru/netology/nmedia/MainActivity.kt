@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.data.observe(this) { post ->
             with(binding) {
 
-                ivAvatar?.setImageResource(R.drawable.ic_launcher_netology_foreground)
+                ivAvatar.setImageResource(R.drawable.ic_launcher_netology_foreground)
 
                 tvpublished.text = post.published
                 tvContent.text = post.content
