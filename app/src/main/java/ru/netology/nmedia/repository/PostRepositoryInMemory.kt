@@ -29,7 +29,7 @@ class PostRepositoryInMemory: PostRepository {
 
     override fun getData(): LiveData<List<Post>> = data
     override fun likeById(id: Long) {
-        post = post.map {post->
+        post = post.map { post ->
             if (post.id == id) {
                 post.copy(
                     countLikes = if (post.likedByMe) post.countLikes - 1 else post.countLikes + 1,
@@ -43,13 +43,19 @@ class PostRepositoryInMemory: PostRepository {
     }
 
 
-//    override fun share() {
-//        post = post.copy(
-//            countShares = post.countShares + 1,
-//            sharedByMe = true
-//        )
-//        data.value = post
-//    }
+    override fun shareById(id: Long) {
+        post = post.map {post ->
+            if (post.id == id){
+                post.copy(
+                    countShares = post.countShares + 1,
+                    sharedByMe = true
+                )
+            } else
+                post
+        }
+
+        data.value = post
+    }
 //
 //    override fun view() {
 //        post = post.copy(
