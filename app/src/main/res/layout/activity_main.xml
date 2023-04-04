@@ -8,6 +8,7 @@
     android:id="@+id/list"
     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
     android:clipToPadding="false"
+    tools:listitem="@layout/card_post"
     tools:context=".MainActivity" />
 
 
