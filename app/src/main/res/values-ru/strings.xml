@@ -9,4 +9,9 @@
     <string name="amountlikes">Лайки</string>
     <string name="amountreposts">Репосты</string>
     <string name="amountviews">Просмотры</string>
+    <string name="remove">Удалить</string>
+    <string name="content">Содержание</string>
+    <string name="save">Сохранить</string>
+    <string name="cont_error">Содержание не может быть пустым!</string>
+    <string name="edit">Редактировать</string>
 </resources>

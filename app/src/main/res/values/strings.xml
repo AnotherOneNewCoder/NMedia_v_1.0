@@ -8,4 +8,9 @@
     <string name="amountlikes">Likes</string>
     <string name="amountreposts">Reposts</string>
     <string name="amountviews">Views</string>
+    <string name="remove">Remove</string>
+    <string name="content">Content</string>
+    <string name="save">Save</string>
+    <string name="cont_error">Content should not be empty!</string>
+    <string name="edit">Edit</string>
 </resources>
