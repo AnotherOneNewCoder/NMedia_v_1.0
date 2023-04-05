@@ -14,4 +14,11 @@
     <string name="save">Сохранить</string>
     <string name="cont_error">Содержание не может быть пустым!</string>
     <string name="edit">Редактировать</string>
+    <string name="edited_post">Редактирование поста</string>
+    <string name="post_id">Номер поста</string>
+    <string name="editedid">Номер редактируемого поста</string>
+    <string name="cancel">Отменить</string>
+    <string name="edited">Редактировать</string>
+    <string name="post_author">"Автор поста: "</string>
+    <string name="posts_id">Номер поста:</string>
 </resources>

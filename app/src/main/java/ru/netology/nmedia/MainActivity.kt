@@ -2,6 +2,7 @@ package ru.netology.nmedia
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import ru.netology.nmedia.adapter.PostAdapter
@@ -22,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         val viewModel: PostViewModel by viewModels()
 
         val adapter = PostAdapter(
-            object: PostListener {
+            object : PostListener {
                 override fun onRemove(post: Post) {
                     viewModel.removeById(post.id)
                 }
@@ -46,6 +47,24 @@ class MainActivity : AppCompatActivity() {
             if (it.id == 0L) {
                 return@observe
             }
+            with(activityMainBinding) {
+                gropEditor.visibility = View.VISIBLE
+                tvEditedPost.text = it.author
+                tvEditedPostId.text = it.id.toString()
+                ivCancel.setOnClickListener {
+                    with(activityMainBinding.etContent) {
+                        viewModel.cancel()
+
+                        setText("")
+                        clearFocus()
+                        AndroidUtils.hideKeyboard(this)
+                        with(activityMainBinding) {
+                            gropEditor.visibility = View.GONE
+                        }
+
+                    }
+                }
+            }
             activityMainBinding.etContent.requestFocus()
             activityMainBinding.etContent.setText(it.content)
         }
@@ -54,7 +73,8 @@ class MainActivity : AppCompatActivity() {
             with(activityMainBinding.etContent) {
                 val content = text.toString()
                 if (content.isNullOrBlank()) {
-                    Toast.makeText(this@MainActivity, R.string.cont_error, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@MainActivity, R.string.cont_error, Toast.LENGTH_SHORT)
+                        .show()
                     return@setOnClickListener
                 }
                 viewModel.changeContent(content)
@@ -69,7 +89,8 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        activityMainBinding.list.adapter =adapter
+
+        activityMainBinding.list.adapter = adapter
         viewModel.data.observe(this) { posts ->
             adapter.submitList(posts)
         }
