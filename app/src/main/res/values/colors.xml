@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="own">#28357E</color>
     <color name="line">#F61D0D</color>
+    <color name="edit_info">#0E56C4</color>
+
 </resources>
