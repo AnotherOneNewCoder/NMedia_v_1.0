@@ -84,6 +84,7 @@ class MainActivity : AppCompatActivity() {
                 setText("")
                 clearFocus()
                 AndroidUtils.hideKeyboard(this)
+                activityMainBinding.gropEditor.visibility = View.GONE
             }
         }
 
