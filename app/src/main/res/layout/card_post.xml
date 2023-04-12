@@ -60,7 +60,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:icon="@drawable/baseline_more_vert_24"
         style="@style/LikeAndShare"
-        android:checkable="true"
          />
 
     <androidx.constraintlayout.widget.Barrier
@@ -128,7 +127,6 @@
         android:layout_marginEnd="@dimen/half_common"
         app:srcCompat="@drawable/veiwed"
         android:contentDescription="@string/views" />
-
 
     <TextView
         android:id="@+id/tvAmountViews"

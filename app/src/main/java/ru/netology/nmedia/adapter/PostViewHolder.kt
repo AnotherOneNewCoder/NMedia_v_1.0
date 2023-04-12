@@ -29,7 +29,7 @@ class PostViewHolder(
             ivLikes.text = Convert.toConvert(post.countLikes)
             ivReposts.isChecked = post.sharedByMe
             ivReposts.text = Convert.toConvert(post.countShares)
-            ibMenu.isChecked= false
+
 
             ivLikes.setOnClickListener {
                 listener.onLike(post)
@@ -38,12 +38,13 @@ class PostViewHolder(
             ivReposts.setOnClickListener {
                 listener.onShare(post)
             }
+
             ibMenu.setOnClickListener {
 
                 PopupMenu(it.context, it).apply {
                     inflate(R.menu.post_options)
                     setOnMenuItemClickListener { itemMenu->
-                        ibMenu.isChecked = true
+
                         when(itemMenu.itemId) {
                             R.id.remove -> {
                                 listener.onRemove(post)
@@ -66,7 +67,7 @@ class PostViewHolder(
                 }.show()
 
             }
-            ibMenu.isChecked= false
+
 
 
 
