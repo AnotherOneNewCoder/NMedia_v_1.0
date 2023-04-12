@@ -48,7 +48,7 @@
         app:layout_constraintEnd_toStartOf="@id/ibMenu"
         tools:text="@sample/posts.json/data/published" />
 
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/ibMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -58,7 +58,10 @@
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_more_vert_24" />
+        app:icon="@drawable/baseline_more_vert_24"
+        style="@style/LikeAndShare"
+        android:checkable="true"
+         />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/bottomBarrier"
@@ -88,10 +91,13 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="249dp" />
 
-    <ImageView
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/ivLikes"
+        app:icon="@drawable/ic_like"
+        android:checkable="true"
         android:background="@android:color/transparent"
-        app:srcCompat="@drawable/likes"
+        android:checked="true"
+        style="@style/LikeAndShare"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/common_spaces"
@@ -99,16 +105,18 @@
         app:layout_constraintTop_toBottomOf="@id/bottomContentBarrier"
         android:contentDescription="@string/likes" />
 
-    <ImageView
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/ivReposts"
+        app:icon="@drawable/ic_share"
+        android:checkable="true"
+        style="@style/LikeAndShare"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/common_spaces"
         android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="@+id/ivLikes"
-        app:layout_constraintStart_toEndOf="@id/tvAmountLikes"
+        app:layout_constraintStart_toEndOf="@id/ivLikes"
         app:layout_constraintTop_toTopOf="@+id/ivLikes"
-        app:srcCompat="@drawable/repost"
         android:contentDescription="@string/reposts" />
     <ImageView
         android:id="@+id/ivViews"
@@ -121,28 +129,6 @@
         app:srcCompat="@drawable/veiwed"
         android:contentDescription="@string/views" />
 
-    <TextView
-        android:id="@+id/tvAmountLikes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/amountlikes"
-        tools:text="10"
-        android:textColor="@color/own"
-        android:layout_marginStart="@dimen/half_common"
-        app:layout_constraintBottom_toBottomOf="@+id/ivLikes"
-        app:layout_constraintStart_toEndOf="@+id/ivLikes"
-        app:layout_constraintTop_toTopOf="@+id/ivLikes" />
-    <TextView
-        android:id="@+id/tvAmountReposts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/amountreposts"
-        tools:text="5"
-        android:textColor="@color/own"
-        android:layout_marginStart="@dimen/half_common"
-        app:layout_constraintBottom_toBottomOf="@+id/ivLikes"
-        app:layout_constraintStart_toEndOf="@+id/ivReposts"
-        app:layout_constraintTop_toTopOf="@+id/ivLikes" />
 
     <TextView
         android:id="@+id/tvAmountViews"
