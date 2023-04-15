@@ -40,24 +40,23 @@ class PostViewHolder(
             }
 
             ibMenu.setOnClickListener {
-
-                PopupMenu(it.context, it).apply {
+                val popmenu = PopupMenu(it.context, it)
+                popmenu.apply {
                     inflate(R.menu.post_options)
                     setOnMenuItemClickListener { itemMenu->
-
+                        ibMenu.isChecked= true
                         when(itemMenu.itemId) {
                             R.id.remove -> {
                                 listener.onRemove(post)
-                                ibMenu.isChecked= false
                                 true
                             }
                             R.id.edit -> {
                                 listener.onEdit(post)
-                                ibMenu.isChecked= false
+
                                 true
                             }
                             else -> {
-                                ibMenu.isChecked= false
+
                                 false
                             }
                         }
@@ -65,6 +64,9 @@ class PostViewHolder(
 
 
                 }.show()
+                popmenu.setOnDismissListener {
+                    ibMenu.isChecked = false
+                }
 
             }
 
