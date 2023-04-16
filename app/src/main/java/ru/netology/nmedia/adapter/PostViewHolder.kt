@@ -1,13 +1,17 @@
 package ru.netology.nmedia.adapter
 
+import android.content.Intent
+import android.net.Uri
+
+import android.view.View
 import android.widget.PopupMenu
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import ru.netology.nmedia.R
 
 import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.service.Convert
-
 
 
 class PostViewHolder(
@@ -30,6 +34,21 @@ class PostViewHolder(
             ivLikes.text = Convert.toConvert(post.countLikes)
             ivReposts.isChecked = post.sharedByMe
             ivReposts.text = Convert.toConvert(post.countShares)
+            if (!post.videoLink.isEmpty()) {
+                link.text = post.videoLink
+                gropEditor.visibility = View.VISIBLE
+                videoLink.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.videoLink))
+                    startActivity(it.context,intent,null)
+                }
+                playVideo.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.videoLink))
+                    startActivity(it.context,intent,null)
+
+
+                }
+
+            }
 
 
             ivLikes.setOnClickListener {
@@ -75,4 +94,6 @@ class PostViewHolder(
 
         }
     }
+
+
 }

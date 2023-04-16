@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         val viewModel: PostViewModel by viewModels()
 
+
         val newPostContract = registerForActivityResult(NewPostActivity.Contract) { result->
             result ?: return@registerForActivityResult
             viewModel.changeContent(result)
@@ -60,52 +61,6 @@ class MainActivity : AppCompatActivity() {
             }
         )
 
-//        viewModel.edited.observe(this) {
-//            if (it.id == 0L) {
-//                return@observe
-//            }
-//            with(activityMainBinding) {
-//                gropEditor.visibility = View.VISIBLE
-//                tvEditedPost.text = it.author
-//                tvEditedPostId.text = it.id.toString()
-//                ivCancel.setOnClickListener {
-//                    with(activityMainBinding.etContent) {
-//                        viewModel.cancel()
-//
-//                        setText("")
-//                        clearFocus()
-//                        AndroidUtils.hideKeyboard(this)
-//                        with(activityMainBinding) {
-//                            gropEditor.visibility = View.GONE
-//                        }
-//
-//                    }
-//                }
-//            }
-//            activityMainBinding.etContent.requestFocus()
-//            activityMainBinding.etContent.setText(it.content)
-//        }
-
-//        activityMainBinding.ivSave.setOnClickListener {
-//            with(activityMainBinding.etContent) {
-//                val content = text.toString()
-//                if (content.isNullOrBlank()) {
-//                    Toast.makeText(this@MainActivity, R.string.cont_error, Toast.LENGTH_SHORT)
-//                        .show()
-//                    return@setOnClickListener
-//                }
-//                viewModel.changeContent(content)
-//                viewModel.save()
-//
-//
-//                setText("")
-//                clearFocus()
-//                AndroidUtils.hideKeyboard(this)
-//                activityMainBinding.gropEditor.visibility = View.GONE
-//            }
-//        }
-
-
 
 
         activityMainBinding.list.adapter = adapter
@@ -116,6 +71,7 @@ class MainActivity : AppCompatActivity() {
         activityMainBinding.add?.setOnClickListener {
             newPostContract.launch("")
         }
+
 
 
     }
