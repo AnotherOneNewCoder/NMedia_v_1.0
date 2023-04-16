@@ -3,6 +3,7 @@ package ru.netology.nmedia.adapter
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import ru.netology.nmedia.R
+
 import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.service.Convert
@@ -52,7 +53,6 @@ class PostViewHolder(
                             }
                             R.id.edit -> {
                                 listener.onEdit(post)
-
                                 true
                             }
                             else -> {

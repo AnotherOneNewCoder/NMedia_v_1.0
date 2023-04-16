@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-import androidx.activity.result.launch
+
 import androidx.activity.viewModels
 import ru.netology.nmedia.R
 import ru.netology.nmedia.adapter.PostAdapter
@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
 
                 override fun onEdit(post: Post) {
                     viewModel.edit(post)
+                    newPostContract.launch(post.content)
                 }
 
                 override fun onLike(post: Post) {
@@ -113,7 +114,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         activityMainBinding.add?.setOnClickListener {
-            newPostContract.launch()
+            newPostContract.launch("")
         }
 
 
