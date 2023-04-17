@@ -89,9 +89,9 @@
         android:layout_marginTop="8dp"
         android:contentDescription="@string/video_link"
         android:scaleType="centerInside"
-        app:layout_constraintEnd_toEndOf="@+id/tvContent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/tvContent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvContent"
         app:srcCompat="@drawable/link" />
 
@@ -179,7 +179,7 @@
 
 
     <androidx.constraintlayout.widget.Group
-        android:id="@+id/grop_editor"
+        android:id="@+id/group_editor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:constraint_referenced_ids="playVideo, videoLink, link"

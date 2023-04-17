@@ -36,7 +36,7 @@ class PostViewHolder(
             ivReposts.text = Convert.toConvert(post.countShares)
             if (!post.videoLink.isEmpty()) {
                 link.text = post.videoLink
-                gropEditor.visibility = View.VISIBLE
+                groupEditor.visibility = View.VISIBLE
                 videoLink.setOnClickListener {
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.videoLink))
                     startActivity(it.context,intent,null)
@@ -48,6 +48,8 @@ class PostViewHolder(
 
                 }
 
+            } else {
+                groupEditor.visibility = View.GONE
             }
 
 
