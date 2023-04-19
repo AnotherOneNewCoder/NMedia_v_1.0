@@ -1,12 +1,17 @@
 package ru.netology.nmedia.adapter
 
+import android.content.Intent
+import android.net.Uri
+
+import android.view.View
 import android.widget.PopupMenu
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import ru.netology.nmedia.R
+
 import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.service.Convert
-
 
 
 class PostViewHolder(
@@ -29,6 +34,23 @@ class PostViewHolder(
             ivLikes.text = Convert.toConvert(post.countLikes)
             ivReposts.isChecked = post.sharedByMe
             ivReposts.text = Convert.toConvert(post.countShares)
+            if (!post.videoLink.isEmpty()) {
+                link.text = post.videoLink
+                groupEditor.visibility = View.VISIBLE
+                videoLink.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.videoLink))
+                    startActivity(it.context,intent,null)
+                }
+                playVideo.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.videoLink))
+                    startActivity(it.context,intent,null)
+
+
+                }
+
+            } else {
+                groupEditor.visibility = View.GONE
+            }
 
 
             ivLikes.setOnClickListener {
@@ -40,24 +62,22 @@ class PostViewHolder(
             }
 
             ibMenu.setOnClickListener {
-
-                PopupMenu(it.context, it).apply {
+                val popmenu = PopupMenu(it.context, it)
+                popmenu.apply {
                     inflate(R.menu.post_options)
                     setOnMenuItemClickListener { itemMenu->
-
+                        ibMenu.isChecked= true
                         when(itemMenu.itemId) {
                             R.id.remove -> {
                                 listener.onRemove(post)
-                                ibMenu.isChecked= false
                                 true
                             }
                             R.id.edit -> {
                                 listener.onEdit(post)
-                                ibMenu.isChecked= false
                                 true
                             }
                             else -> {
-                                ibMenu.isChecked= false
+
                                 false
                             }
                         }
@@ -65,6 +85,9 @@ class PostViewHolder(
 
 
                 }.show()
+                popmenu.setOnDismissListener {
+                    ibMenu.isChecked = false
+                }
 
             }
 
@@ -73,4 +96,6 @@ class PostViewHolder(
 
         }
     }
+
+
 }

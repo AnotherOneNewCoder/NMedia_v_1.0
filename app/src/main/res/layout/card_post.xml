@@ -5,7 +5,7 @@
     android:padding="@dimen/common_spaces"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
     <ImageView
         android:id="@+id/ivAvatar"
@@ -55,6 +55,7 @@
         android:background="@android:color/transparent"
         android:contentDescription="@string/app_name"
         android:minWidth="48dp"
+        android:checkable="true"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -81,12 +82,48 @@
         tools:ignore="VisualLintLongText"
         android:autoLink="web"/>
 
+    <ImageView
+        android:id="@+id/videoLink"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/video_link"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvContent"
+        app:srcCompat="@drawable/link" />
+
+    <ImageButton
+        android:id="@+id/playVideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_play"
+        app:layout_constraintBottom_toBottomOf="@+id/videoLink"
+        app:layout_constraintEnd_toEndOf="@+id/videoLink"
+        app:layout_constraintStart_toStartOf="@+id/videoLink"
+        app:layout_constraintTop_toTopOf="@+id/videoLink"
+        android:contentDescription="@string/video_link"/>
+
+    <TextView
+        android:id="@+id/link"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/tvContent"
+        app:layout_constraintStart_toStartOf="@+id/tvContent"
+        app:layout_constraintTop_toBottomOf="@id/videoLink"
+
+        tools:text="@string/toolsLink" />
+
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/bottomContentBarrier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="tvContent"
+        app:constraint_referenced_ids="link"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="249dp" />
 
@@ -138,6 +175,15 @@
         app:layout_constraintBottom_toBottomOf="@+id/ivLikes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/ivLikes" />
+
+
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_editor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="playVideo, videoLink, link"
+        android:visibility="gone"/>
 
 
 

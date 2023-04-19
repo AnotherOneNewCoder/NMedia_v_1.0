@@ -21,4 +21,7 @@
     <string name="edited">Редактировать</string>
     <string name="post_author">"Автор поста: "</string>
     <string name="posts_id">Номер поста:</string>
+    <string name="chooser_share_post">Поделиться постом</string>
+    <string name="addpost">Добавить пост</string>
+    <string name="video_link">Ссылка на видео</string>
 </resources>

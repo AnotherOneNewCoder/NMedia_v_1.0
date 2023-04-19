@@ -22,7 +22,8 @@ class PostRepositoryInMemory : PostRepository {
             published = "21 мая в 18:36",
             likedByMe = false,
             sharedByMe = false,
-            viewedByMe = false
+            viewedByMe = false,
+            videoLink = "https://www.youtube.com/watch?v=lS9Ml4Q8W2g"
         )
     ).reversed()
     private val data = MutableLiveData(posts)
