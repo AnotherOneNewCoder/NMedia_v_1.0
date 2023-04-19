@@ -14,7 +14,8 @@ import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.dto.Post
 
 
-import ru.netology.nmedia.viewmodel.PostViewModel
+
+import ru.netology.nmedia.viewmodel.PostViewModelGson
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +23,8 @@ class MainActivity : AppCompatActivity() {
         val activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
 
-        val viewModel: PostViewModel by viewModels()
+        val viewModel: PostViewModelGson by viewModels()
+//        val viewModel: PostViewModel by viewModels()
 
 
         val newPostContract = registerForActivityResult(NewPostActivity.Contract) { result->
