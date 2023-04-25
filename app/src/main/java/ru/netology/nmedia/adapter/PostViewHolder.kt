@@ -52,7 +52,9 @@ class PostViewHolder(
                 groupEditor.visibility = View.GONE
             }
 
-
+            root.setOnClickListener{
+                listener.onDetails(post)
+            }
             ivLikes.setOnClickListener {
                 listener.onLike(post)
 

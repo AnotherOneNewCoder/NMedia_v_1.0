@@ -30,6 +30,9 @@ class PostViewModelGson(application: Application): AndroidViewModel(application)
     fun shareById(id: Long) = repository.shareById(id)
     fun removeById(id: Long) = repository.removeById(id)
 
+
+
+
     val edited = MutableLiveData(emptyPost)
 
     fun save() {

@@ -64,6 +64,7 @@ class PostRepositoryInGson(
         data.value = posts
     }
 
+
     override fun shareById(id: Long) {
         posts = posts.map { post ->
             if (post.id == id) {
@@ -104,6 +105,7 @@ class PostRepositoryInGson(
         }
 
     }
+
 //    private fun readPosts(): List<Post> {
 //        val file = context.filesDir.resolve(FILE_NAME)
 //        return if (file.exists()) {
