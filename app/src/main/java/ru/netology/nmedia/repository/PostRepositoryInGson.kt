@@ -32,7 +32,17 @@ class PostRepositoryInGson(
 
 
     init {
-        readPosts()
+        val file = context.filesDir.resolve(FILE_NAME)
+        if (file.exists()) {
+            // если файл есть - читаем
+            context.openFileInput(FILE_NAME).bufferedReader().use {
+                posts = gson.fromJson(it, type)
+                data.value = posts
+            }
+        } else {
+            // если нет, записываем пустой массив
+            sync()
+        }
     }
 
 
@@ -53,6 +63,7 @@ class PostRepositoryInGson(
         }
         data.value = posts
     }
+
 
     override fun shareById(id: Long) {
         posts = posts.map { post ->
@@ -94,16 +105,17 @@ class PostRepositoryInGson(
         }
 
     }
-    private fun readPosts(): List<Post> {
-        val file = context.filesDir.resolve(FILE_NAME)
-        return if (file.exists()) {
-        context.openFileInput(FILE_NAME).bufferedReader().use {
-            gson.fromJson(it, type)
-        }
-        } else {
-            emptyList()
-        }
-    }
+
+//    private fun readPosts(): List<Post> {
+//        val file = context.filesDir.resolve(FILE_NAME)
+//        return if (file.exists()) {
+//        context.openFileInput(FILE_NAME).bufferedReader().use {
+//            gson.fromJson(it, type)
+//        }
+//        } else {
+//            emptyList()
+//        }
+//    }
 
 
 }

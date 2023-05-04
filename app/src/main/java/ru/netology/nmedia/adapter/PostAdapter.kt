@@ -11,6 +11,8 @@ interface PostListener {
     fun onEdit(post: Post)
     fun onLike(post: Post)
     fun onShare(post: Post)
+
+    fun onDetails(post: Post)
 }
 class PostAdapter(
     private val listener: PostListener
