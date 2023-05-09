@@ -3,10 +3,12 @@ package ru.netology.nmedia.repository
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.map
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import ru.netology.nmedia.dao.PostDao
 import ru.netology.nmedia.dto.Post
+import ru.netology.nmedia.entity.PostEntity
 
 
 class PostRepositorySQLiteImpl(
@@ -14,8 +16,6 @@ class PostRepositorySQLiteImpl(
     private val context: Context
 ) : PostRepository {
 
-    private var posts = emptyList<Post>()
-    private val data = MutableLiveData(posts)
     // для черновика
     companion object {
 
@@ -32,12 +32,8 @@ class PostRepositorySQLiteImpl(
     private val dataJson = MutableLiveData(drafts)
 
 
-
-
-
     init {
-        posts = dao.getAll()
-        data.value = posts
+
         // для черновика
         val file = context.filesDir.resolve(FILE_NAME)
         if (file.exists()) {
@@ -51,51 +47,26 @@ class PostRepositorySQLiteImpl(
             sync()
         }
 
-
-
     }
 
-    override fun getData(): LiveData<List<Post>> = data
+    override fun getData() = dao.getAll().map { list->
+        list.map { it.toDto() }
+    }
 
     override fun likeById(id: Long) {
         dao.likeById(id)
-        posts = posts.map {
-            if (it.id != id) it else it.copy(
-                likedByMe = !it.likedByMe,
-                countLikes = if (it.likedByMe) it.countLikes -1 else it.countLikes +1
-            )
-        }
-        data.value = posts
     }
 
     override fun shareById(id: Long) {
         dao.shareByID(id)
-        posts = posts.map {
-            if (it.id != id) it else it.copy(
-                sharedByMe = true,
-                countShares = it.countShares + 1
-            )
-        }
-        data.value = posts
     }
 
     override fun removeById(id: Long) {
         dao.removeById(id)
-        posts = posts.filter {it.id != id}
-        data.value = posts
     }
 
     override fun save(post: Post) {
-        val id = post.id
-        val saved = dao.save(post)
-        posts = if (id == 0L) {
-            listOf(saved) + posts
-        } else {
-            posts.map {
-                if (it.id != id) it else saved
-            }
-        }
-        data.value = posts
+        dao.save(PostEntity.fromDto(post))
     }
 
     override fun getDataDraft(): LiveData<List<String>> =dataJson
@@ -123,12 +94,4 @@ class PostRepositorySQLiteImpl(
         }
 
     }
-
-
-
-
-
-
-
-
 }
