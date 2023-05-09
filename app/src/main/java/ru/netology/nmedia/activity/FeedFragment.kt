@@ -6,8 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-
-
 import androidx.fragment.app.Fragment
 
 import androidx.fragment.app.viewModels
@@ -23,8 +21,8 @@ import ru.netology.nmedia.databinding.FragmentFeedBinding
 import ru.netology.nmedia.dto.Post
 
 
-
-import ru.netology.nmedia.viewmodel.PostViewModelGson
+//import ru.netology.nmedia.viewmodel.PostViewModelGson
+import ru.netology.nmedia.viewmodel.PostViewModelSQLImpl
 
 class FeedFragment : Fragment() {
 
@@ -35,7 +33,7 @@ class FeedFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val activityMainBinding = FragmentFeedBinding.inflate(layoutInflater)
-        val viewModel: PostViewModelGson by viewModels(
+        val viewModel: PostViewModelSQLImpl by viewModels(
             ownerProducer = ::requireParentFragment
         )
 //        val viewModel: PostViewModel by viewModels()

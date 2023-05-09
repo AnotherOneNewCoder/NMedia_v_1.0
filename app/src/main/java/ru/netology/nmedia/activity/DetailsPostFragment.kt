@@ -18,7 +18,8 @@ import ru.netology.nmedia.activity.NewPostFragment.Companion.stringArg
 import ru.netology.nmedia.databinding.FragmentDetailsPostBinding
 
 import ru.netology.nmedia.service.Convert
-import ru.netology.nmedia.viewmodel.PostViewModelGson
+
+import ru.netology.nmedia.viewmodel.PostViewModelSQLImpl
 
 class DetailsPostFragment: Fragment() {
     override fun onCreateView(
@@ -27,7 +28,7 @@ class DetailsPostFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val binding = FragmentDetailsPostBinding.inflate(layoutInflater)
-        val viewModel: PostViewModelGson by viewModels(
+        val viewModel: PostViewModelSQLImpl by viewModels(
             ownerProducer = ::requireParentFragment
         )
 
@@ -51,7 +52,7 @@ class DetailsPostFragment: Fragment() {
                          ivReposts.text = Convert.toConvert(post.countShares)
                          if (!post.videoLink.isEmpty()) {
                              link.text = post.videoLink
-                             groupEditor.visibility = View.VISIBLE
+                             groupEditor.visibility = View.GONE
                              videoLink.setOnClickListener {
                                  val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.videoLink))
                                  ContextCompat.startActivity(it.context, intent, null)

@@ -11,6 +11,10 @@ interface PostRepository {
     fun removeById(id: Long)
 
     fun save(post: Post)
+    fun getDataDraft(): LiveData<List<String>>
+    fun addDraft(draft: String)
+    fun clearDrafts()
+    fun showDraft() : String
 
 
 
