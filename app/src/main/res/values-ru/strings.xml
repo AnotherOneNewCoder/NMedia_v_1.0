@@ -24,4 +24,6 @@
     <string name="chooser_share_post">Поделиться постом</string>
     <string name="addpost">Добавить пост</string>
     <string name="video_link">Ссылка на видео</string>
+    <string name="notification_user_published_new_post">%1$s опубликовал новый пост:</string>
+    <string name="notification_unknow">Возможно у вас есть новые уведомления</string>
 </resources>
